@@ -12,4 +12,13 @@ class SampleController extends Controller
         $samples = Sample::all();
         return view('list',compact('samples'));
     }
+    //テーブルにデータを追加
+    public function create (Request $request) {
+        Sample::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'comment' => $request->comment,
+        ]);
+        return redirect('/list');
+    }
 }
